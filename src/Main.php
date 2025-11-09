@@ -8,7 +8,6 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerCreationEvent;
 use pocketmine\event\player\PlayerDeathEvent;
-use pocketmine\event\player\PlayerRespawnEvent;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\SingletonTrait;
 
@@ -34,16 +33,10 @@ class Main extends PluginBase implements Listener {
                 $c = $cause->getCause();
                 if ($c === self::CAUSE_HEARTH_ATTACK) {
                     $event->setDeathMessage($player->getName() . " died of a hearth attack");
+                    $player->resetTicksLived();
+                    $player->setRandomTicksToLive();
                 }
             }
-        }
-    }
-
-    public function onRespawn(PlayerRespawnEvent $event): void {
-        $player = $event->getPlayer();
-        if ($player instanceof CardiacPlayer) {
-            $player->resetTicksLived();
-            $player->setTicksToLive($this->getRandomTick());
         }
     }
 
@@ -51,9 +44,4 @@ class Main extends PluginBase implements Listener {
         $event->setBaseClass(CardiacPlayer::class);
         $event->setPlayerClass(CardiacPlayer::class);
     }
-
-    public function getRandomTick(): int {
-        return mt_rand(1, mt_getrandmax());
-    }
-
 }
