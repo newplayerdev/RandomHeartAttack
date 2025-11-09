@@ -47,7 +47,7 @@ class CardiacPlayer extends Player
     }
 
     public function setRandomTicksToLive(): void {
-        // Let's you approximatively 300 hours in game before having your hearth fail you
+        // Lets you approximatively 300 hours in game before having your hearth fail you
         $this->hearthAttackTick = mt_rand(0, mt_getrandmax()/100);
     }
 
