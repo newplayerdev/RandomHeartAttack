@@ -40,7 +40,7 @@ class CardiacPlayer extends Player
 
     /**
      * Returns the count of ticks the player has to live before having a hearth attack
-     * @return void
+     * @return int
      */
     public function getTicksToLive(): int {
         return $this->hearthAttackTick;
