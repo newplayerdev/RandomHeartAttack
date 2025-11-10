@@ -1,6 +1,6 @@
 <?php
 
-namespace NewPlayerMC\RandomHearthAttack;
+namespace NewPlayerMC\RandomHeartAttack;
 
 use pocketmine\entity\Location;
 use pocketmine\event\entity\EntityDamageEvent;

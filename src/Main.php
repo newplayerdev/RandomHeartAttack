@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NewPlayerMC\RandomHearthAttack;
+namespace NewPlayerMC\RandomHeartAttack;
 
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\Listener;

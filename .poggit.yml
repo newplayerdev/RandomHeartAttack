@@ -1,8 +1,8 @@
---- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/newplayerdev/RandomHearthAttack
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/newplayerdev/RandomHeartAttack
 build-by-default: true
 branches:
 - main
 projects:
-  RandomHearthAttack:
+  RandomHeartAttack:
     path: ""
 ...

@@ -1,5 +1,5 @@
 ---
-name: RandomHearthAttack
+name: RandomHeartAttack
 version: 0.0.1
 main: NewPlayerMC\RandomHearthAttack\Main
 api: 5.35.0
