@@ -1,7 +1,7 @@
 ---
 name: RandomHeartAttack
 version: 0.0.1
-main: NewPlayerMC\RandomHearthAttack\Main
+main: NewPlayerMC\RandomHeartAttack\Main
 api: 5.35.0
-src-namespace-prefix: NewPlayerMC\RandomHearthAttack
+src-namespace-prefix: NewPlayerMC\RandomHeartAttack
 ...
