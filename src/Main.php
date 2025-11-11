@@ -8,6 +8,7 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerCreationEvent;
 use pocketmine\event\player\PlayerDeathEvent;
+use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\SingletonTrait;
 
@@ -25,6 +26,11 @@ class Main extends PluginBase implements Listener {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
 
+    public function onPlayerCreation(PlayerCreationEvent $event) {
+        $event->setBaseClass(CardiacPlayer::class);
+        $event->setPlayerClass(CardiacPlayer::class);
+    }
+
     public function onDeath(PlayerDeathEvent $event): void {
         $player = $event->getPlayer();
         if ($player instanceof CardiacPlayer) {
@@ -40,8 +46,4 @@ class Main extends PluginBase implements Listener {
         }
     }
 
-    public function onPlayerCreation(PlayerCreationEvent $event) {
-        $event->setBaseClass(CardiacPlayer::class);
-        $event->setPlayerClass(CardiacPlayer::class);
-    }
 }
