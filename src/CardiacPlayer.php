@@ -86,7 +86,7 @@ class CardiacPlayer extends Player
     {
         if ($this->getGamemode() === GameMode::SURVIVAL()) {
             if ($this->isSprinting()) $this->sprintingTicks++;
-            else if ($this->sprintingTicks > 0) $this->sprintingTicks = round($this->sprintingTicks * 0.9);
+            else if ($this->sprintingTicks > 0) $$this->sprintingTicks = (int)round($this->sprintingTicks * 0.9);
             if (($this->ticksLived >= $this->ticksToLive) || ($this->sprintingTicks >= $this->maxSprintingTicks)) {
                 $this->causeHeartAttack();
             }
