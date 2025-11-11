@@ -1,4 +1,4 @@
-<img width="663" height="92" alt="image" src="https://github.com/user-attachments/assets/ba190892-a640-4133-935e-6d9de187180e" />A simple and really useful PMMP 5.x plugin that gives you a slim chance of dying of a hearth attack anytime while you are playing.
+A simple and really useful PMMP 5.x plugin that gives you a slim chance of dying of a hearth attack anytime while you are playing.
 
 - Every player is assigned a random tick lifespan upon joining.
 - This countdown is saved and persists across disconnections.
