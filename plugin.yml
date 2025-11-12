@@ -4,4 +4,11 @@ version: 0.0.1
 main: NewPlayerMC\RandomHeartAttack\Main
 api: 5.35.0
 src-namespace-prefix: NewPlayerMC\RandomHeartAttack
+
+depends:
+  - FormAPI
+
+permissions:
+  heartattack.command:
+      default: op
 ...

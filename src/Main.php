@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NewPlayerMC\RandomHeartAttack;
 
+use NewPlayerMC\RandomHeartAttack\commands\HeartAttackCommand;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerCreationEvent;
@@ -24,6 +25,11 @@ class Main extends PluginBase implements Listener {
         self::$instance = $this;
 
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
+
+        $this->getServer()->getCommandMap()->register(
+            "heartattack",
+            new HeartAttackCommand($this, "heartattack", "Heartattack commands", ['ha'])
+        );
     }
 
     public function onPlayerCreation(PlayerCreationEvent $event) {

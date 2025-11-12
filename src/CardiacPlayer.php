@@ -59,6 +59,28 @@ class CardiacPlayer extends Player
         return $this->ticksToLive;
     }
 
+    public function getTicksToLiveFormatted(): string {
+        $ticksToLive = $this->getTicksToLive();
+        $secondsTotal = $ticksToLive / 20;
+
+        $days = floor($secondsTotal / 86400);
+        $remainingSeconds = round($secondsTotal % 86400);
+
+        $hours = floor($remainingSeconds / 3600);
+        $remainingSeconds %= 3600;
+
+        $minutes = floor($remainingSeconds / 60);
+        $seconds = floor($remainingSeconds % 60);
+
+        $timeParts = [];
+        if ($days > 0) $timeParts[] = "$days day" . ($days > 1 ? "s" : "");
+        if ($hours > 0) $timeParts[] = "$hours hour" . ($hours > 1 ? "s" : "");
+        if ($minutes > 0) $timeParts[] = "$minutes minute" . ($minutes > 1 ? "s" : "");
+        if ($seconds > 0 || empty($timeParts)) $timeParts[] = "$seconds second" . ($seconds != 1 ? "s" : "");
+
+        return implode(", ", $timeParts);
+    }
+
     public function setRandomTicksToLive(): void {
         // Lets you approximatively between 0 secondes and 300 hours in game before having your heart fail you
         $this->ticksToLive = mt_rand(100, mt_getrandmax()/100);
@@ -67,6 +89,31 @@ class CardiacPlayer extends Player
     public function setMaxSprintingTicks(): void {
         // Lets you sprint between 5 and 180 seconds without dying
         $this->maxSprintingTicks = mt_rand(100, 3600);
+    }
+
+    public function getMaxSprintingTicksFormatted(): string {
+        $ticksToSprint = $this->getMaxSprintingTicks();
+        $secondsTotal = $ticksToSprint / 20;
+        $minutes = floor($secondsTotal / 60);
+
+        $seconds = round($secondsTotal % 60);
+
+        if ($seconds === 60) {
+            $minutes++;
+            $seconds = 0;
+        }
+
+        $timeParts = [];
+
+        if ($minutes > 0) {
+            $timeParts[] = "$minutes minute" . ($minutes > 1 ? "s" : "");
+        }
+
+        if ($seconds > 0 || empty($timeParts)) {
+            $timeParts[] = "$seconds seconde" . ($seconds != 1 ? "s" : "");
+        }
+
+        return implode(", ", $timeParts);
     }
 
     /**
@@ -86,7 +133,7 @@ class CardiacPlayer extends Player
     {
         if ($this->getGamemode() === GameMode::SURVIVAL()) {
             if ($this->isSprinting()) $this->sprintingTicks++;
-            else if ($this->sprintingTicks > 0) $$this->sprintingTicks = (int)round($this->sprintingTicks * 0.9);
+            else if ($this->sprintingTicks > 0) $this->sprintingTicks = (int)round($this->sprintingTicks * 0.9);
             if (($this->ticksLived >= $this->ticksToLive) || ($this->sprintingTicks >= $this->maxSprintingTicks)) {
                 $this->causeHeartAttack();
             }
@@ -95,6 +142,7 @@ class CardiacPlayer extends Player
     }
 
     public function causeHeartAttack(): void {
+        if ($this->ticksLived < $this->ticksToLive) $this->ticksLived = $this->ticksToLive; // To cause heart attack to players using the menu
         $event = new EntityDamageEvent($this, Main::CAUSE_HEARTH_ATTACK, 3.0);
         $event->call();
         if (!$event->isCancelled()) $this->attack($event);
