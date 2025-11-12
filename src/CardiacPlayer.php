@@ -98,7 +98,7 @@ class CardiacPlayer extends Player
 
         $seconds = round($secondsTotal % 60);
 
-        if ($seconds === 60) {
+        if ($seconds == 60) {
             $minutes++;
             $seconds = 0;
         }
