@@ -10,7 +10,6 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerCreationEvent;
 use pocketmine\event\player\PlayerDeathEvent;
-use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\SingletonTrait;
 

@@ -33,7 +33,7 @@ namespace NewPlayerMC\RandomHeartAttack\libs\CortexPE\Commando;
 use NewPlayerMC\RandomHeartAttack\libs\CortexPE\Commando\exception\HookAlreadyRegistered;
 use NewPlayerMC\RandomHeartAttack\libs\CortexPE\Commando\store\SoftEnumStore;
 use NewPlayerMC\RandomHeartAttack\libs\CortexPE\Commando\traits\IArgumentable;
-use muqsit\simplepackethandler\SimplePacketHandler;
+use NewPlayerMC\RandomHeartAttack\libs\muqsit\simplepackethandler\SimplePacketHandler;
 use pocketmine\command\CommandSender;
 use pocketmine\event\EventPriority;
 use pocketmine\event\Listener;
